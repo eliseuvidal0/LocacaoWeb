@@ -1,0 +1,72 @@
+﻿@model Cliente
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home - Locação</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="menu">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <form>
+                <fieldset>
+                    <legend>Cadastrar Cliente</legend>
+                    <div asp-validation-summary="ModelOnly"></div>
+
+
+                    <label asp-for="nome">Nome do Cliente:</label>
+                    <input asp-for="nome" type="text" />
+                    <span asp-validation-for="nome" />
+
+                    <label asp-for="email">E-mail do Cliente:</label>
+                    <input asp-for="email" type="text" />
+                    <span asp-validation-for="email" />
+
+                    <label asp-for="cpf">CPF do Cliente:</label>
+                    <input asp-for="cpf" type="text" />
+                    <span asp-validation-for="cpf" />
+
+                    <label asp-for="telefone">Telefone do Cliente:</label>
+                    <input asp-for="telefone" type="text" />
+                    <span asp-validation-for="telefone" />
+
+                    <label asp-for="nascimento">Data de nascimento do Cliente:</label>
+                    <input asp-for="nascimento" type="date" />
+                    <span asp-validation-for="nascimento" />
+
+                    <label asp-for="cnh">CNH do Cliente:</label>
+                    <select asp-for="cnh">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="AB">AB</option>
+                        <option value="AC">AC</option>
+                        <option value="AD">AD</option>
+                        <option value="AE">AE</option>
+                    </select>
+                    <span asp-validation-for="cnh" />
+
+                    <input type="submit" value="Cadastrar" />
+                </fieldset>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>
+

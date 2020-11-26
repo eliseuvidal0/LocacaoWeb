@@ -1,0 +1,66 @@
+﻿@model Veiculo
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home - Locação</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="menu">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <form>
+                <fieldset>
+                    <legend>Cadastrar Veículo</legend>
+                    <div asp-validation-summary="ModelOnly"></div>
+
+
+                    <label asp-for="placa">Placa do Veículo:</label>
+                    <input asp-for="placa" type="text" />
+                    <span asp-validation-for="placa" />
+
+                    <label asp-for="marca">Marca do Veículo:</label>
+                    <input asp-for="marca" type="text" />
+                    <span asp-validation-for="marca" />
+
+                    <label asp-for="modelo">Modelo do Veículo:</label>
+                    <input asp-for="modelo" type="text" />
+                    <span asp-validation-for="modelo" />
+
+                    <label asp-for="cor">Cor do Veículo:</label>
+                    <input asp-for="cor" type="text" />
+                    <span asp-validation-for="cor" />
+
+                    <label asp-for="valorDiaria">Valor do Veículo:</label>
+                    <input asp-for="valorDiaria" type="text" />
+                    <span asp-validation-for="valorDiaria" />
+
+                    <label asp-for="tipo">Tipo do Veículo:</label>
+                    <select asp-for="tipo">
+                        <option value="Carro">Carro</option>
+                        <option value="Moto">Moto</option>
+                        <option value="Caminhao">Caminhão</option>
+                    </select>
+                    <span asp-validation-for="tipo" />
+
+                    <input type="submit" value="Cadastrar" />
+                </fieldset>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>
+

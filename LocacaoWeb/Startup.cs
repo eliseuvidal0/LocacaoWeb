@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,6 +26,11 @@ namespace LocacaoWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ClienteDAO>();
+            services.AddScoped<FuncionarioDAO>();
+            services.AddScoped<LocacaoDAO>();
+            services.AddScoped<VeiculoDAO>();
+
             services.AddDbContext<Context>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
 
