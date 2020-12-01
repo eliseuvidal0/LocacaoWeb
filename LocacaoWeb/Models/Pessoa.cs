@@ -11,8 +11,14 @@ namespace LocacaoWeb.Models
         }
         [Key]
         public virtual int id { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual String cpf { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual String nome { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual String email { get; set; }
         public virtual DateTime criadoEm { get; set; }
     }

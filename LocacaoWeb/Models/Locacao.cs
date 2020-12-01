@@ -9,11 +9,21 @@ namespace LocacaoWeb.Models
     {
         [Key]
         public virtual int id { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual Cliente cliente { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual Veiculo veiculo { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual Funcionario funcionario { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual string formaPagamento { get; set; }
         public virtual double totalLocacao { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual DateTime previsaoEntrega { get; set; }
         public virtual DateTime criadoEm { get; set; }
         public virtual DateTime dataEntrega { get; set; }

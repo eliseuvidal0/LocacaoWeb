@@ -8,21 +8,33 @@ namespace LocacaoWeb.Models
     public class Veiculo
     {
 
-            [Key]
-            public virtual int id { get; set; }
-            public virtual string placa { get; set; }
-            public virtual string tipo { get; set; }
-            public virtual string marca { get; set; }
-            public virtual string modelo { get; set; }
-            public virtual string cor { get; set; }
-            public virtual double valorDiaria { get; set; }
-            public virtual bool locado { get; set; }
-            public virtual DateTime criadoEm { get; set; }
+        [Key]
+        public virtual int id { get; set; }
 
-            public Veiculo()
-            {
-                this.criadoEm = DateTime.Now;
-                this.locado = false;
-            }
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        public virtual string placa { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        public virtual string tipo { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        public virtual string marca { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        public virtual string modelo { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        public virtual string cor { get; set; }
+
+        [Required(ErrorMessage = "Campo obrigatório!")]
+        public virtual double valorDiaria { get; set; }
+        public virtual bool locado { get; set; }
+        public virtual DateTime criadoEm { get; set; }
+
+        public Veiculo()
+        {
+            this.criadoEm = DateTime.Now;
+            this.locado = false;
         }
+    }
 }
