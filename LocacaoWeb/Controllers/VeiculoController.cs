@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
+using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocacaoWeb.Controllers
@@ -24,11 +25,21 @@ namespace LocacaoWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_veiculoDAO.Cadastrar(veiculo))
+                if (Validacao.ValidarPlaca(veiculo.placa)) {
+                    if (_veiculoDAO.Cadastrar(veiculo))
+                    {
+                        return RedirectToAction("Index", "Veiculo");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Já existe veiculo cadastrado nessa PLACA!");
+                    }
+                    
+                } else
                 {
-                    return RedirectToAction("Index", "Veiculo");
+
+                    ModelState.AddModelError("", "PLACA INVÁLIDA!");
                 }
-                ModelState.AddModelError("", "Já existe veiculo cadastrado nessa PLACA!");
             }
             return View(veiculo);
         }

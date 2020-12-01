@@ -591,7 +591,7 @@ p {
     color: #fff;
     padding-bottom: 30px;
 }
-
+/*titulo*/
 .intro {
     padding-top: 60px;
 }
@@ -602,7 +602,7 @@ p {
         color: #fff;
         text-transform: uppercase;
     }
-
+    /*NAV*/
 .menu {
     background: #202020;
     max-width: 440px;
@@ -648,7 +648,7 @@ p {
     padding: 10px 0;
     margin-bottom: 40px;
 }
-
+/*VEICULO*/
 .veiculos {
     display: flex;
     flex-wrap: wrap;
@@ -666,7 +666,7 @@ p {
 .sub {
     margin-top: 20px;
 }
-
+/*SOBRE*/
 .sobre {
     background: #202020;
     padding-top: 20px;
@@ -676,7 +676,7 @@ p {
     .sobre p {
         color: #fff;
     }
-
+    /*CONTATO*/
 .contato {
     padding-top: 20px;
     padding-bottom: 20px;

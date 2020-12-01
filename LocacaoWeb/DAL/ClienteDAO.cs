@@ -1,4 +1,5 @@
 ﻿using LocacaoWeb.Models;
+using LocacaoWeb.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,9 @@ namespace LocacaoWeb.DAL
             {
                 return false;
             }
+
+            cliente.cpf = Validacao.Formatar(cliente.cpf);
+
             _context.Clientes.Add(cliente);
             _context.SaveChanges();
             return true;

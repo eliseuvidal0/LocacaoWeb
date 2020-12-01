@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
+using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocacaoWeb.Controllers
@@ -26,11 +27,22 @@ namespace LocacaoWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_funcionarioDAO.Cadastrar(funcionario))
+                if (Validacao.ValidarCpf(funcionario.cpf))
                 {
-                    return RedirectToAction("Index", "Funcionario");
+                    if (_funcionarioDAO.Cadastrar(funcionario))
+                    {
+                        return RedirectToAction("Index", "Funcionario");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Funcionário já existe!");
+                    }
                 }
-                ModelState.AddModelError("", "Já existe funcionário cadastrado nesse CPF!");
+                else 
+                { 
+                    ModelState.AddModelError("", "**Cpf inválido!**"); 
+                }
+
             }
             return View(funcionario);
         } 

@@ -21,7 +21,7 @@
     </header>
     <section>
         <div class="container">
-            <form>
+            <form asp-action="Cadastrar" asp-controller="Cliente" method="post">
                 <fieldset>
                     <legend>Cadastrar Cliente</legend>
                     <div asp-validation-summary="ModelOnly"></div>
@@ -49,6 +49,7 @@
 
                     <label asp-for="cnh">CNH do Cliente:</label>
                     <select asp-for="cnh">
+                        <option>--ESCOLHER--</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>

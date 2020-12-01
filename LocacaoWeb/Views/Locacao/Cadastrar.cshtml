@@ -3,8 +3,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Home - Locação</title>
+    <title>Cadastrar - Locação</title>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -19,34 +20,54 @@
             </nav>
         </div>
     </header>
+
     <section>
         <div class="container">
             <form asp-action="Cadastrar" asp-controller="Locacao" method="post">
                 <fieldset>
                     <legend>Cadastrar Locação</legend>
                     <div asp-validation-summary="ModelOnly"></div>
-                    <Grid>
-                        <Label Content="Cliente:" HorizontalAlignment="Left" Margin="160,40,0,0" VerticalAlignment="Top" />
-                        <Label Content="Veículo:" HorizontalAlignment="Left" Margin="160,80,0,0" VerticalAlignment="Top" />
-                        <Label Content="Funcionário:" HorizontalAlignment="Left" Margin="130,120,0,0" VerticalAlignment="Top" />
-                        <Label Content="Forma de pagamento:" HorizontalAlignment="Left" Margin="60,160,0,0" VerticalAlignment="Top" />
-                        <Label Content="Previsão de entrega:" HorizontalAlignment="Left" Margin="72,200,0,0" VerticalAlignment="Top" />
-                        
-                        <ComboBox Name="cboClientes" HorizontalAlignment="Left" Margin="240,45,0,0" VerticalAlignment="Top" Width="180" TabIndex="0" />
-                        <ComboBox Name="cboVeiculos" HorizontalAlignment="Left" Margin="240,85,0,0" VerticalAlignment="Top" Width="180" TabIndex="1" />
-                        <ComboBox Name="cboFuncionarios" HorizontalAlignment="Left" Margin="240,125,0,0" VerticalAlignment="Top" Width="180" TabIndex="2" />
-                        <ComboBox Name="cboFormaPagamento" HorizontalAlignment="Left" Margin="240,165,0,0" VerticalAlignment="Top" Width="180" TabIndex="3">
-                            <ComboBoxItem Content="Dinheiro" />
-                            <ComboBoxItem Content="Cartão de débito" />
-                            <ComboBoxItem Content="Cartão de crédito" />
-                        </ComboBox>
-                        <DatePicker x:Name="txtDataEntrega" HorizontalAlignment="Left" Margin="240,205,0,0" VerticalAlignment="Top" Width="180" TabIndex="4" />
 
-                    </Grid>
+                    <label asp-for="cliente">Nome do Cliente:</label>
+                    <select asp-items="@ViewBag.Cliente" asp-for="cliente">
+                        <option>-- ESCOLHER --</option>
+                    </select>
+                    <span asp-validation-for="cliente" />
+                    <br />
 
-                    <input type="submit" value="Cadastrar" />
+                    <label asp-for="funcionario">Nome do Funcionário:</label>
+                    <select asp-items="@ViewBag.Funcionario" asp-for="funcionario">
+                        <option>-- ESCOLHER --</option>
+                    </select>
+                    <span asp-validation-for="funcionario" />
+                    <br />
+
+                    <label asp-for="veiculo">Veículo:</label>
+                    <select asp-items="@ViewBag.Veiculo" asp-for="veiculo">
+                        <option>-- ESCOLHER --</option>
+                    </select>
+                    <span asp-validation-for="veiculo" />
+                    <br />
+
+                    <label asp-for="formaPagamento">Forma de pagamento:</label>
+                    <select asp-for="formaPagamento">
+                        <option>-- ESCOLHER --</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão de crédito">Cartão de crédito</option>
+                        <option value="Cartão de débito">Cartão de débito</option>
+                    </select>
+                    <span asp-validation-for="formaPagamento" />
+                    <br />
+
+                    <label asp-for="previsaoEntrega">Previsão da entrega:</label>
+                    <input asp-for="previsaoEntrega" type="date" />
+                    <span asp-validation-for="previsaoEntrega" />
+
+                    <div>
+                        <input type="submit" value="Cadastrar" />
+                    </div>
                 </fieldset>
-            </form>
+        </form>
         </div>
     </section>
 </body>

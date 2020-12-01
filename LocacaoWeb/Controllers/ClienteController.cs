@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
+using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocacaoWeb.Controllers
@@ -24,11 +25,27 @@ namespace LocacaoWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_clienteDAO.Cadastrar(cliente))
+                if (Validacao.CalcularIdade(cliente.nascimento) > 17)
                 {
-                    return RedirectToAction("Index", "Cliente");
+                    if (Validacao.ValidarCpf(cliente.cpf))
+                    {
+                        if (_clienteDAO.Cadastrar(cliente))
+                        {
+                            return RedirectToAction("Index", "Cliente");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Já existe cliente cadastrado nesse CPF!");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "**Cpf inválido!**");
+                    }
+                }else
+                {
+                    ModelState.AddModelError("", "**Menor de idade não pode ser cadastrado!**");
                 }
-                ModelState.AddModelError("", "Já existe cliente cadastrado nesse CPF!");
             }
             return View(cliente);
         }

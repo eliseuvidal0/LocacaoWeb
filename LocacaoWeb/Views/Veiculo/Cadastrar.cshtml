@@ -21,7 +21,7 @@
     </header>
     <section>
         <div class="container">
-            <form>
+            <form asp-action="Cadastrar" asp-controller="veiculo" method="post">
                 <fieldset>
                     <legend>Cadastrar Veículo</legend>
                     <div asp-validation-summary="ModelOnly"></div>
@@ -49,6 +49,7 @@
 
                     <label asp-for="tipo">Tipo do Veículo:</label>
                     <select asp-for="tipo">
+                        <option>--ESCOLHER--</option>
                         <option value="Carro">Carro</option>
                         <option value="Moto">Moto</option>
                         <option value="Caminhao">Caminhão</option>

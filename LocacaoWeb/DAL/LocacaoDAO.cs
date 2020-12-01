@@ -29,6 +29,11 @@ namespace LocacaoWeb.DAL
             }
 
         }
+        public void Alterar(Locacao locacao)
+        {
+            _context.Locacoes.Update(locacao);
+            _context.SaveChanges();
+        }
 
         public bool ValidarCatCnh(Locacao locacao)
         {
@@ -70,15 +75,11 @@ namespace LocacaoWeb.DAL
             }
         }
 
-        public void Alterar(Locacao locacao)
-        {
-            _context.Locacoes.Update(locacao);
-            _context.SaveChanges();
-        }
-        public Locacao BuscarPorId(int id) => _context.Locacoes.Find(id);
         public List<Locacao> Listar() => _context.Locacoes.ToList();
         public List<Locacao> ListarLocado() => _context.Locacoes.Where(x => x.devolvido == false).ToList();
         public List<Locacao> ListarLocPorCli(string cpf) => _context.Locacoes.Where(x => x.cliente.cpf == cpf).ToList();
+
         public Veiculo BuscarVeiculo(string modelo) => _context.Veiculos.FirstOrDefault(x => x.modelo.Equals(modelo));
+        public Locacao BuscarPorId(int id) => _context.Locacoes.Find(id);
     }
 }
