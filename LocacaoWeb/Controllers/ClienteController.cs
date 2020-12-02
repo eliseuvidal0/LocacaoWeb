@@ -19,6 +19,7 @@ namespace LocacaoWeb.Controllers
         }
 
         public IActionResult Cadastrar() => View();
+        public IActionResult Cadastrar2() => View();
 
         [HttpPost]
         public IActionResult Cadastrar(Cliente cliente)

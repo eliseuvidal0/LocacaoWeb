@@ -1,13 +1,26 @@
 ﻿@model Locacao
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Colorlib Templates" />
+    <meta name="author" content="Colorlib" />
+    <meta name="keywords" content="Colorlib Templates" />
+
     <title>Cadastrar - Locação</title>
+
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" media="all" />
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" />
+    <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="~/css/cadastrar.css" rel="stylesheet" media="all">
+
 </head>
 
 <body>
-    <header>
+    <!--<header>
         <div class="container">
             <nav class="menu">
                 <ul>
@@ -19,59 +32,108 @@
                 </ul>
             </nav>
         </div>
-    </header>
+    </header>-->
 
     <section>
-        <div class="container">
-            <form asp-action="Cadastrar" asp-controller="Locacao" method="post">
-                <fieldset>
-                    <legend>Cadastrar Locação</legend>
-                    <div asp-validation-summary="ModelOnly"></div>
-
-                    <label asp-for="cliente">Nome do Cliente:</label>
-                    <select asp-items="@ViewBag.Cliente" asp-for="cliente">
-                        <option>-- ESCOLHER --</option>
-                    </select>
-                    <span asp-validation-for="cliente" />
-                    <br />
-
-                    <label asp-for="funcionario">Nome do Funcionário:</label>
-                    <select asp-items="@ViewBag.Funcionario" asp-for="funcionario">
-                        <option>-- ESCOLHER --</option>
-                    </select>
-                    <span asp-validation-for="funcionario" />
-                    <br />
-
-                    <label asp-for="veiculo">Veículo:</label>
-                    <select asp-items="@ViewBag.Veiculo" asp-for="veiculo">
-                        <option>-- ESCOLHER --</option>
-                    </select>
-                    <span asp-validation-for="veiculo" />
-                    <br />
-
-                    <label asp-for="formaPagamento">Forma de pagamento:</label>
-                    <select asp-for="formaPagamento">
-                        <option>-- ESCOLHER --</option>
-                        <option value="Dinheiro">Dinheiro</option>
-                        <option value="Cartão de crédito">Cartão de crédito</option>
-                        <option value="Cartão de débito">Cartão de débito</option>
-                    </select>
-                    <span asp-validation-for="formaPagamento" />
-                    <br />
-
-                    <label asp-for="previsaoEntrega">Previsão da entrega:</label>
-                    <input asp-for="previsaoEntrega" type="date" />
-                    <span asp-validation-for="previsaoEntrega" />
-
-                    <div>
-                        <input type="submit" value="Cadastrar" />
+        <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+            <div class="wrapper wrapper--w790">
+                <div class="card card-5">
+                    <div class="card-heading">
+                        <h2 class="title">Cadastrar Locação</h2>
                     </div>
-                </fieldset>
-        </form>
+                    <div class="card-body">
+                        <form asp-action="Cadastrar" asp-controller="Locacao" method="post">
+                            <div asp-validation-summary="ModelOnly"></div>
+                            <div class="form-row">
+                                <div class="name">Nome Cliente</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <label asp-for="cliente" />
+                                            <select asp-items="@ViewBag.Cliente" asp-for="cliente">
+                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
+                                            </select>
+                                            <span asp-validation-for="cliente" />
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Nome Funcionário</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <label asp-for="funcionario" />
+                                            <select asp-items="@ViewBag.Funcionario" asp-for="funcionario">
+                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
+                                            </select>
+                                            <span asp-validation-for="funcionario" />
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Veículo</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <label asp-for="veiculo" />
+                                            <select asp-items="@ViewBag.Veiculo" asp-for="veiculo">
+                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
+                                            </select>
+                                            <span asp-validation-for="veiculo" />
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Forma de pagamento</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <label asp-for="formaPagamento" />
+                                            <select asp-for="formaPagamento">
+                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
+                                                <option value="Dinheiro">Dinheiro</option>
+                                                <option value="Cartão de crédito">Cartão de crédito</option>
+                                                <option value="Cartão de débito">Cartão de débito</option>
+                                            </select>
+                                            <span asp-validation-for="formaPagamento" />
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="name">Previsão de entrega</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="date" asp-for="previsaoEntrega">
+                                        <label asp-for="previsaoEntrega" />
+                                        <span asp-validation-for="previsaoEntrega" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn--radius-2 btn--red" type="submit" value="Cadastrar">Cadastrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-</body>
 
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <script src="~/vendor/datepicker/moment.min.js"></script>
+    <script src="~/vendor/datepicker/daterangepicker.js"></script>
+    <script src="~/js/cadastrar.js"></script>
+
+</body>
 </html>
 
 
