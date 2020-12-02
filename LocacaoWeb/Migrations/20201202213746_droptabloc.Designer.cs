@@ -4,14 +4,16 @@ using LocacaoWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocacaoWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201202213746_droptabloc")]
+    partial class droptabloc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,63 +86,6 @@ namespace LocacaoWeb.Migrations
                     b.ToTable("Funcionarios");
                 });
 
-            modelBuilder.Entity("LocacaoWeb.Models.Locacao", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("cliID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("clienteid")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("criadoEm")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("custoVariavel")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("dataEntrega")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("devolvido")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("formaPagamento")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("funID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("funcionarioid")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("previsaoEntrega")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("totalLocacao")
-                        .HasColumnType("float");
-
-                    b.Property<int>("vecID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("veiculoid")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("clienteid");
-
-                    b.HasIndex("funcionarioid");
-
-                    b.HasIndex("veiculoid");
-
-                    b.ToTable("Locacoes");
-                });
-
             modelBuilder.Entity("LocacaoWeb.Models.Veiculo", b =>
                 {
                     b.Property<int>("id")
@@ -180,21 +125,6 @@ namespace LocacaoWeb.Migrations
                     b.HasKey("id");
 
                     b.ToTable("veiculos");
-                });
-
-            modelBuilder.Entity("LocacaoWeb.Models.Locacao", b =>
-                {
-                    b.HasOne("LocacaoWeb.Models.Cliente", "cliente")
-                        .WithMany()
-                        .HasForeignKey("clienteid");
-
-                    b.HasOne("LocacaoWeb.Models.Funcionario", "funcionario")
-                        .WithMany()
-                        .HasForeignKey("funcionarioid");
-
-                    b.HasOne("LocacaoWeb.Models.Veiculo", "veiculo")
-                        .WithMany()
-                        .HasForeignKey("veiculoid");
                 });
 #pragma warning restore 612, 618
         }

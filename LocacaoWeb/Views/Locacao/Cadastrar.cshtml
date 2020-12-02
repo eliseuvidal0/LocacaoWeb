@@ -43,17 +43,16 @@
                     </div>
                     <div class="card-body">
                         <form asp-action="Cadastrar" asp-controller="Locacao" method="post">
-                            <div asp-validation-summary="ModelOnly"></div>
+
                             <div class="form-row">
                                 <div class="name">Nome Cliente</div>
                                 <div class="value">
                                     <div class="input-group">
                                         <div class="rs-select2 js-select-simple select--no-search">
-                                            <label asp-for="cliente" />
-                                            <select asp-items="@ViewBag.Cliente" asp-for="cliente">
+                                            <label asp-for="cliID" />
+                                            <select asp-items="@ViewBag.Cliente" asp-for="cliID">
                                                 <option disabled="disabled" selected="selected">Escolha a opção</option>
                                             </select>
-                                            <span asp-validation-for="cliente" />
                                             <div class="select-dropdown"></div>
                                         </div>
                                     </div>
@@ -64,11 +63,10 @@
                                 <div class="value">
                                     <div class="input-group">
                                         <div class="rs-select2 js-select-simple select--no-search">
-                                            <label asp-for="funcionario" />
-                                            <select asp-items="@ViewBag.Funcionario" asp-for="funcionario">
+                                            <label asp-for="funID" />
+                                            <select asp-items="@ViewBag.Funcionario" asp-for="funID">
                                                 <option disabled="disabled" selected="selected">Escolha a opção</option>
                                             </select>
-                                            <span asp-validation-for="funcionario" />
                                             <div class="select-dropdown"></div>
                                         </div>
                                     </div>
@@ -79,11 +77,10 @@
                                 <div class="value">
                                     <div class="input-group">
                                         <div class="rs-select2 js-select-simple select--no-search">
-                                            <label asp-for="veiculo" />
-                                            <select asp-items="@ViewBag.Veiculo" asp-for="veiculo">
+                                            <label asp-for="vecID" />
+                                            <select asp-items="@ViewBag.Veiculo" asp-for="vecID">
                                                 <option disabled="disabled" selected="selected">Escolha a opção</option>
                                             </select>
-                                            <span asp-validation-for="veiculo" />
                                             <div class="select-dropdown"></div>
                                         </div>
                                     </div>
@@ -101,7 +98,7 @@
                                                 <option value="Cartão de crédito">Cartão de crédito</option>
                                                 <option value="Cartão de débito">Cartão de débito</option>
                                             </select>
-                                            <span asp-validation-for="formaPagamento" />
+                                            
                                             <div class="select-dropdown"></div>
                                         </div>
                                     </div>
@@ -113,7 +110,6 @@
                                     <div class="input-group">
                                         <input class="input--style-5" type="date" asp-for="previsaoEntrega">
                                         <label asp-for="previsaoEntrega" />
-                                        <span asp-validation-for="previsaoEntrega" />
                                     </div>
                                 </div>
                             </div>

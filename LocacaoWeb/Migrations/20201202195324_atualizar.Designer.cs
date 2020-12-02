@@ -4,14 +4,16 @@ using LocacaoWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocacaoWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201202195324_atualizar")]
+    partial class atualizar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,10 +93,7 @@ namespace LocacaoWeb.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("cliID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("clienteid")
+                    b.Property<int>("clienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("criadoEm")
@@ -110,12 +109,10 @@ namespace LocacaoWeb.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("formaPagamento")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("funID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("funcionarioid")
+                    b.Property<int>("funcionarioId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("previsaoEntrega")
@@ -124,19 +121,16 @@ namespace LocacaoWeb.Migrations
                     b.Property<double>("totalLocacao")
                         .HasColumnType("float");
 
-                    b.Property<int>("vecID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("veiculoid")
+                    b.Property<int>("veiculoId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("clienteid");
+                    b.HasIndex("clienteId");
 
-                    b.HasIndex("funcionarioid");
+                    b.HasIndex("funcionarioId");
 
-                    b.HasIndex("veiculoid");
+                    b.HasIndex("veiculoId");
 
                     b.ToTable("Locacoes");
                 });
@@ -186,15 +180,21 @@ namespace LocacaoWeb.Migrations
                 {
                     b.HasOne("LocacaoWeb.Models.Cliente", "cliente")
                         .WithMany()
-                        .HasForeignKey("clienteid");
+                        .HasForeignKey("clienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LocacaoWeb.Models.Funcionario", "funcionario")
                         .WithMany()
-                        .HasForeignKey("funcionarioid");
+                        .HasForeignKey("funcionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("LocacaoWeb.Models.Veiculo", "veiculo")
                         .WithMany()
-                        .HasForeignKey("veiculoid");
+                        .HasForeignKey("veiculoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

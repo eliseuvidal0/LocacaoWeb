@@ -41,8 +41,11 @@ namespace LocacaoWeb.Controllers
         public IActionResult Cadastrar(Locacao locacao)
         {
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+                locacao.cliente = _clienteDAO.buscarPorId(locacao.cliID);
+                locacao.funcionario = _funcionarioDAO.buscarPorId(locacao.funID);
+                locacao.veiculo = _veiculoDAO.BuscarPorId(locacao.vecID);
                 if (Validacao.ValidarCatCnh(locacao))
                 {
                     if (_locacaoDAO.Cadastrar(locacao))
@@ -54,7 +57,12 @@ namespace LocacaoWeb.Controllers
                 {
                     ModelState.AddModelError("", "CNH INVÁLIDA!");
                 }
-            }
+            //}
+
+            ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");
+            ViewBag.Funcionario = new SelectList(_funcionarioDAO.Listar(), "id", "nome");
+            ViewBag.Veiculo = new SelectList(_veiculoDAO.Listar(), "id", "modelo");
+
             return View(locacao);
         }
     }

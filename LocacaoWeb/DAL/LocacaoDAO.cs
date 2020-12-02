@@ -81,5 +81,6 @@ namespace LocacaoWeb.DAL
 
         public Veiculo BuscarVeiculo(string modelo) => _context.Veiculos.FirstOrDefault(x => x.modelo.Equals(modelo));
         public Locacao BuscarPorId(int id) => _context.Locacoes.Find(id);
+        
     }
 }

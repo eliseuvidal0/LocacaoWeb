@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<Locacao>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <title>Cadastrar - Locação</title>
+
+
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>cliente</th>
+                <th>funcionario</th>
+                <th>veiculo</th>
+                <th>-</th>
+                <th>-</th>
+                <th>-</th>
+                <th>-</th>
+                <th>-</th>
+                <th>-</th>
+                <th>-</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Locacao loc in Model)
+            {
+                <tr>
+                    <td>@loc.id</td>
+                    <td>@loc.cliente.nome</td>
+                    <td>@loc.funcionario.nome.ToString()</td>
+                    <td>@loc.veiculo.modelo</td>
+                    <td>@loc.totalLocacao</td>
+                    <td>@loc.previsaoEntrega</td>
+                    <td>@loc.formaPagamento</td>
+                    <td>@loc.funID</td>
+                    <td>@loc.custoVariavel</td>
+                    <td>@loc.cliID</td>
+                </tr>}
+        </tbody>
+    </table>
+</body>
+</html>
+
+
