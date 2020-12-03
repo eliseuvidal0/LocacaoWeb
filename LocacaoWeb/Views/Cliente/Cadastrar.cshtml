@@ -18,6 +18,10 @@
     <link href="~/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
     <link href="~/css/cadastrar.css" rel="stylesheet" media="all">
 
+    <link href="~/lib/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet" media="all"/>
+    <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" rel="stylesheet" media="all"/>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="all"/>
+
 </head>
 <body>
     <!--<header>
@@ -38,7 +42,14 @@
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
-                        <h2 class="title">Cadastrar Cliente</h2>
+                    <h2 class="title">Cadastrar Cliente</h2>
+                    <!--<nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-dark">
+                            <li class="breadcrumb-item"><h4><a href="#">Cadastrar Cliente</a></h4></li>
+                            <li class="breadcrumb-item"><h4><a href="#">Listar Clientes</a></h4></li>
+                            <li class="breadcrumb-item"><h4><a href="#">Buscar Cliente</a></h4></li>
+                        </ol>
+                    </nav>-->
                     </div>
                     <div class="card-body">
                         <form asp-action="Cadastrar" asp-controller="Cliente" method="post">
@@ -132,6 +143,8 @@
     <script src="~/vendor/datepicker/moment.min.js"></script>
     <script src="~/vendor/datepicker/daterangepicker.js"></script>
     <script src="~/js/cadastrar.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 </body>
 </html>
