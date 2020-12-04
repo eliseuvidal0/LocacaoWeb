@@ -13,7 +13,6 @@ namespace LocacaoWeb.Controllers
     public class FuncionarioController : Controller
     {
         private readonly FuncionarioDAO _funcionarioDAO;
-        private readonly Context _context;
 
         public FuncionarioController(FuncionarioDAO funcionarioDAO) => _funcionarioDAO = funcionarioDAO;
 
@@ -49,10 +48,9 @@ namespace LocacaoWeb.Controllers
             return View(funcionario);
         }
 
-        [HttpPost]
-        public IActionResult Remover(Funcionario funcionario)
+        public IActionResult Remover(int id)
         {
-            _funcionarioDAO.Remover(funcionario.id);
+            _funcionarioDAO.Remover(id);
             return RedirectToAction("Index", "Funcionario");
         }
     }

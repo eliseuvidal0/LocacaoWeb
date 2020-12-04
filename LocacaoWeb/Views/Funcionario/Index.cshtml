@@ -64,7 +64,7 @@
                                         <td>@funcionario.cpf</td>
                                         <td>@funcionario.email</td>
                                         <td><a asp-action="Cadastrar" asp-controller="Funcionario" class="btn btn-primary" role="button">Editar</a></td>
-                                        <td><button class="btn btn-primary" value="Remover" asp-action="Index" asp-controller="Funcionario">Excluir</button></td>
+                                        <td><a asp-action="Remover" asp-controller="Funcionario" asp-route-id="@funcionario.id" class="btn btn-danger">Excluir</a></td>
                                     </tr>
                                     }
                                 </tbody>

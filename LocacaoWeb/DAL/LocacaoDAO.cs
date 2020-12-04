@@ -1,4 +1,5 @@
 ﻿using LocacaoWeb.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace LocacaoWeb.DAL
             _context.SaveChanges();
         }
 
-        public List<Locacao> Listar() => _context.Locacoes.ToList();
+        public List<Locacao> Listar() => _context.Locacoes.Include(x => x.cliente.nome).Include(x => x.funcionario.nome).Include(x => x.veiculo.placa).ToList();
         public List<Locacao> ListarLocado() => _context.Locacoes.Where(x => x.devolvido == false).ToList();
         public List<Locacao> ListarLocPorCli(string cpf) => _context.Locacoes.Where(x => x.cliente.cpf == cpf).ToList();
         public Veiculo BuscarVeiculo(string modelo) => _context.Veiculos.FirstOrDefault(x => x.modelo.Equals(modelo));
