@@ -35,50 +35,9 @@ namespace LocacaoWeb.DAL
             _context.SaveChanges();
         }
 
-        public bool ValidarCatCnh(Locacao locacao)
-        {
-            if (locacao.veiculo.tipo == "Carro" && locacao.cliente.cnh == "A")
-            {
-                return false;
-            }
-            else if (locacao.veiculo.tipo == "Caminhão" && locacao.cliente.cnh == "B")
-            {
-                return false;
-            }
-            else if (locacao.veiculo.tipo == "Caminhão" && locacao.cliente.cnh == "A")
-            {
-                return false;
-            }
-            else if (locacao.veiculo.tipo == "Caminhão" && locacao.cliente.cnh == "AB")
-            {
-                return false;
-            }
-            else if (locacao.veiculo.tipo == "Moto" && locacao.cliente.cnh == "B")
-            {
-                return false;
-            }
-            else if (locacao.veiculo.tipo == "Moto" && locacao.cliente.cnh == "C")
-            {
-                return false;
-            }
-            else if (locacao.veiculo.tipo == "Moto" && locacao.cliente.cnh == "D")
-            {
-                return false;
-            }
-            else if (locacao.veiculo.tipo == "Moto" && locacao.cliente.cnh == "E")
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
         public List<Locacao> Listar() => _context.Locacoes.ToList();
         public List<Locacao> ListarLocado() => _context.Locacoes.Where(x => x.devolvido == false).ToList();
         public List<Locacao> ListarLocPorCli(string cpf) => _context.Locacoes.Where(x => x.cliente.cpf == cpf).ToList();
-
         public Veiculo BuscarVeiculo(string modelo) => _context.Veiculos.FirstOrDefault(x => x.modelo.Equals(modelo));
         public Locacao BuscarPorId(int id) => _context.Locacoes.Find(id);
         

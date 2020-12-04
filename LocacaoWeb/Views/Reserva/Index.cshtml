@@ -1,0 +1,120 @@
+﻿@model Reserva
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Colorlib Templates" />
+    <meta name="author" content="Colorlib" />
+    <meta name="keywords" content="Colorlib Templates" />
+
+    <title>Cadastrar - Reserva</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" media="all" />
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet" />
+    <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="~/css/cadastrar.css" rel="stylesheet" media="all">
+
+</head>
+
+<body>
+    <header>
+        <div class="fixed-top">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Action</button>
+                    <button class="dropdown-item" type="button">Another action</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+            <div class="wrapper wrapper--w790">
+                <div class="card card-5">
+                    <div class="card-heading">
+                        <h2 class="title">Cadastrar reserva</h2>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="Cadastrar" asp-controller="Reserva" method="post">
+
+                            <div class="form-row">
+                                <div class="name">Selecionar Cliente</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <label asp-for="cliID" />
+                                            <select asp-items="@ViewBag.Cliente" asp-for="cliID">
+                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="name">Selecionar Veículo</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <label asp-for="vecID" />
+                                            <select asp-items="@ViewBag.Veiculo" asp-for="vecID">
+                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="name">Forma de pagamento</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <label asp-for="formaPagamento" />
+                                            <select asp-for="formaPagamento">
+                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
+                                                <option value="Dinheiro">Dinheiro</option>
+                                                <option value="Cartão de crédito">Cartão de crédito</option>
+                                                <option value="Cartão de débito">Cartão de débito</option>
+                                            </select>
+
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button class="btn btn--radius-2 btn--red" type="submit" value="Cadastrar">Cadastrar</button>
+                            </div>
+                            <div>
+                                <a asp-action="Cadastrar" asp-controller="Cliente">Ainda não é clinete? Faça um cadastro agora!</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <script src="~/vendor/datepicker/moment.min.js"></script>
+    <script src="~/vendor/datepicker/daterangepicker.js"></script>
+    <script src="~/js/cadastrar.js"></script>
+
+</body>
+</html>
+
+

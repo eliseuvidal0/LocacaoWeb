@@ -30,6 +30,7 @@ namespace LocacaoWeb
             services.AddScoped<FuncionarioDAO>();
             services.AddScoped<LocacaoDAO>();
             services.AddScoped<VeiculoDAO>();
+            services.AddScoped<ReservaDAO>();
 
             services.AddDbContext<Context>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));

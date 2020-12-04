@@ -11,5 +11,6 @@ namespace LocacaoWeb.Models
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<Locacao> Locacoes { get; set; }
+        public DbSet<Reserva> Reservas { get; set; }
     }
 }

@@ -709,6 +709,26 @@ footer {
             border-color: #000;
         }
 
+/*BOTÃO*/
+.btnHome {
+    border: 3px solid #202020;
+    padding: 10px 30px;
+    color: #202020;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: bold;
+    max-width: 180px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .btnHome:hover {
+        color: #4800ff;
+        border-color: #4800ff;
+    }
+
 /*JAVASCRIPT*/
 
 .js [data-anime] {
