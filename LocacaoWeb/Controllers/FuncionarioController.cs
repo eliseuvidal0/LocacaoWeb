@@ -6,12 +6,14 @@ using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LocacaoWeb.Controllers
 {
     public class FuncionarioController : Controller
     {
         private readonly FuncionarioDAO _funcionarioDAO;
+        private readonly Context _context;
 
         public FuncionarioController(FuncionarioDAO funcionarioDAO) => _funcionarioDAO = funcionarioDAO;
 
@@ -45,6 +47,13 @@ namespace LocacaoWeb.Controllers
 
             }
             return View(funcionario);
-        } 
+        }
+
+        [HttpPost]
+        public IActionResult Remover(Funcionario funcionario)
+        {
+            _funcionarioDAO.Remover(funcionario.id);
+            return RedirectToAction("Index", "Funcionario");
+        }
     }
 }
