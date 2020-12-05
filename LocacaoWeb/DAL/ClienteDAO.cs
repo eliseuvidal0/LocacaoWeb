@@ -1,5 +1,6 @@
 ﻿using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,14 @@ namespace LocacaoWeb.DAL
 
         public void Remover(int id)
         {
+            _context.Database.ExecuteSqlRaw("ALTER TABLE Locacoes NOCHECK CONSTRAINT FK_Locacoes_clientes_clienteid");
             _context.Clientes.Remove(buscarPorId(id));
+            _context.SaveChanges();
+        }
+
+        public void Editar(Cliente cliente)
+        {
+            _context.Clientes.Update(cliente);
             _context.SaveChanges();
         }
 

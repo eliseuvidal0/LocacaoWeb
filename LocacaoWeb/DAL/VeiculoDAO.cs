@@ -22,16 +22,15 @@ namespace LocacaoWeb.DAL
                 return true;
             }
         }
-        public void Remover(Veiculo veiculo)
+        public void Remover(int id)
         {
             _context.Database.ExecuteSqlRaw("ALTER TABLE Locacoes NOCHECK CONSTRAINT FK_Locacoes_veiculos_veiculoid");
-            _context.Veiculos.Remove(veiculo);
+            _context.Veiculos.Remove(BuscarPorId(id));
             _context.SaveChanges();
         }
 
         public void Editar(Veiculo veiculo)
         {
-
             _context.Veiculos.Update(veiculo);
             _context.SaveChanges();
         }

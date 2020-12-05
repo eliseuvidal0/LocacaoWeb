@@ -43,5 +43,23 @@ namespace LocacaoWeb.Controllers
             }
             return View(veiculo);
         }
+
+        public IActionResult Remover(int id)
+        {
+            _veiculoDAO.Remover(id);
+            return RedirectToAction("Index", "Veiculo");
+        }
+
+        public IActionResult Editar(int id)
+        {
+            return View(_veiculoDAO.BuscarPorId(id));
+        }
+        [HttpPost]
+        public IActionResult Editar(Veiculo veiculo)
+        {
+            _veiculoDAO.Editar(veiculo);
+
+            return RedirectToAction("Index", "Veiculo");
+        }
     }
 }

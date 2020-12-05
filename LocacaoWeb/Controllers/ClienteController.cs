@@ -52,5 +52,17 @@ namespace LocacaoWeb.Controllers
             _clienteDAO.Remover(id);
             return RedirectToAction("Index", "Cliente");
         }
+
+        public IActionResult Editar(int id)
+        {
+            return View(_clienteDAO.buscarPorId(id));
+        }
+        [HttpPost]
+        public IActionResult Editar(Cliente cliente)
+        {
+            _clienteDAO.Editar(cliente);
+
+            return RedirectToAction("Index", "Cliente");
+        }
     }
 }

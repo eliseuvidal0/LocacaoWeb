@@ -9,7 +9,7 @@
     <meta name="author" content="Colorlib" />
     <meta name="keywords" content="Colorlib Templates" />
 
-    <title>Clientes - Locação</title>
+    <title>Listar - Clientes</title>
 
     <link href="~/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" media="all" />
     <link href="~/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" media="all" />
@@ -59,7 +59,7 @@
                             <td>@cli.telefone</td>
                             <td>@cli.nascimento</td>
                             <td>@cli.cnh</td>
-                            <td><a asp-action="Cadastrar" asp-controller="Cliente" class="btn btn-primary" role="button">Editar</a></td>
+                            <td><a asp-action="Editar" asp-controller="Cliente" asp-route-id="@cli.id" class="btn btn-primary" role="button">Editar</a></td>
                             <td><a asp-action="Remover" asp-controller="Cliente" asp-route-id="@cli.id" class="btn btn-danger">Excluir</a></td>
                         </tr>
 }

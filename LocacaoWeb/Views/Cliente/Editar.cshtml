@@ -9,7 +9,7 @@
     <meta name="author" content="Colorlib" />
     <meta name="keywords" content="Colorlib Templates" />
 
-    <title>Cadastrar - Cliente</title>
+    <title>Editar - Cliente</title>
 
     <link href="~/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" media="all" />
     <link href="~/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" media="all" />
@@ -17,10 +17,6 @@
     <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="~/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
     <link href="~/css/cadastrar.css" rel="stylesheet" media="all">
-
-    <link href="~/lib/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet" media="all" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" rel="stylesheet" media="all" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="all" />
 
 </head>
 <body>
@@ -32,11 +28,11 @@
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
-                        <h2 class="title">Cadastrar Cliente</h2>
+                        <h2 class="title">Editar Cliente</h2>
 
                     </div>
                     <div class="card-body">
-                        <form asp-action="Cadastrar" asp-controller="Cliente" method="post">
+                        <form asp-action="Editar" asp-controller="Cliente" method="post">
                             <div asp-validation-summary="ModelOnly"></div>
                             <div class="form-row">
                                 <div class="name">Nome</div>
@@ -113,7 +109,7 @@
                                 </div>
                             </div>
                             <div>
-                                <button class="btn btn--radius-2 btn--red" type="submit" value="Cadastrar">Cadastrar</button>
+                                <button class="btn btn--radius-2 btn--red" type="submit" value="Editar">Editar</button>
                             </div>
                         </form>
                     </div>
@@ -127,8 +123,6 @@
     <script src="~/vendor/datepicker/moment.min.js"></script>
     <script src="~/vendor/datepicker/daterangepicker.js"></script>
     <script src="~/js/cadastrar.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 </body>
 </html>
