@@ -33,6 +33,7 @@ namespace LocacaoWeb.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Cadastrar(Reserva reserva)
         {
             reserva.cliente = _clienteDAO.buscarPorId(reserva.cliID);

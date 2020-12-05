@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LocacaoWeb.DAL;
+﻿using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace LocacaoWeb.Controllers
 {
@@ -22,7 +17,7 @@ namespace LocacaoWeb.Controllers
         }
 
         public IActionResult Cadastrar() => View();
-        
+
         [HttpPost]
         public IActionResult Cadastrar(Funcionario funcionario)
         {
@@ -39,9 +34,9 @@ namespace LocacaoWeb.Controllers
                         ModelState.AddModelError("", "Funcionário já existe!");
                     }
                 }
-                else 
-                { 
-                    ModelState.AddModelError("", "**Cpf inválido!**"); 
+                else
+                {
+                    ModelState.AddModelError("", "**Cpf inválido!**");
                 }
 
             }
@@ -51,6 +46,18 @@ namespace LocacaoWeb.Controllers
         public IActionResult Remover(int id)
         {
             _funcionarioDAO.Remover(id);
+            return RedirectToAction("Index", "Funcionario");
+        }
+
+        public IActionResult Editar(int id)
+        {
+            return View(_funcionarioDAO.buscarPorId(id));
+        }
+        [HttpPost]
+        public IActionResult Editar(Funcionario funcionario)
+        {
+            _funcionarioDAO.Editar(funcionario);
+
             return RedirectToAction("Index", "Funcionario");
         }
     }

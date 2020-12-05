@@ -1,6 +1,6 @@
 ﻿@model List<Funcionario>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 
     <meta charset="utf-8" />
@@ -9,7 +9,7 @@
     <meta name="author" content="Colorlib" />
     <meta name="keywords" content="Colorlib Templates" />
 
-    <title>Home - Locação</title>
+    <title>Funcionários - Locação</title>
 
     <link href="~/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" media="all" />
     <link href="~/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" media="all" />
@@ -25,24 +25,14 @@
 </head>
 <body>
     <!--<header>
-        <div class="container">
-            <nav class="menu">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </nav>
-        </div>
+
     </header>-->
     <section>
         <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
-                        <h2 class="title">Listar Funcionário</h2>
+                        <h2 class="title">Listar Funcionários</h2>
                     </div>
                     <div class="card-body">
                         <form>
@@ -59,14 +49,13 @@
                                 <tbody>
                                     @foreach (Funcionario funcionario in Model)
                                     {
-                                    <tr>
-                                        <td>@funcionario.nome.ToString()</td>
-                                        <td>@funcionario.cpf</td>
-                                        <td>@funcionario.email</td>
-                                        <td><a asp-action="Cadastrar" asp-controller="Funcionario" class="btn btn-primary" role="button">Editar</a></td>
-                                        <td><a asp-action="Remover" asp-controller="Funcionario" asp-route-id="@funcionario.id" class="btn btn-danger">Excluir</a></td>
-                                    </tr>
-                                    }
+                        <tr>
+                            <td>@funcionario.nome.ToString()</td>
+                            <td>@funcionario.cpf</td>
+                            <td>@funcionario.email</td>
+                            <td><a asp-action="Editar" asp-controller="Funcionario" asp-route-id="@funcionario.id" class="btn btn-primary" role="button">Editar</a></td>
+                            <td><a asp-action="Remover" asp-controller="Funcionario" asp-route-id="@funcionario.id" class="btn btn-danger">Excluir</a></td>
+                        </tr>}
                                 </tbody>
                             </table>
                         </form>

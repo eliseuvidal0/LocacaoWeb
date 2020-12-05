@@ -9,7 +9,7 @@
     <meta name="author" content="Colorlib" />
     <meta name="keywords" content="Colorlib Templates" />
 
-    <title>Home - Locação</title>
+    <title>Editar - Funcionário</title>
 
     <link href="~/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" media="all" />
     <link href="~/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" media="all" />
@@ -21,27 +21,17 @@
 </head>
 <body>
     <!--<header>
-        <div class="container">
-            <nav class="menu">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </nav>
-        </div>
+
     </header>-->
     <section>
         <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
-                        <h2 class="title">Cadastrar Funcionário</h2>
+                        <h2 class="title">Editar Funcionário</h2>
                     </div>
                     <div class="card-body">
-                        <form asp-action="Cadastrar" asp-controller="Funcionario" method="post">
+                        <form asp-action="Editar" asp-controller="Funcionario" method="post">
                             <div asp-validation-summary="ModelOnly"></div>
                             <div class="form-row">
                                 <div class="name">Nome</div>
@@ -74,7 +64,7 @@
                                 </div>
                             </div>
                             <div>
-                                <button class="btn btn--radius-2 btn--red" type="submit" value="Cadastrar">Cadastrar</button>
+                                <button class="btn btn--radius-2 btn--red" type="submit" value="Editar">Editar</button>
                             </div>
                         </form>
                     </div>

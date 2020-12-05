@@ -9,7 +9,7 @@
     <meta name="author" content="Colorlib" />
     <meta name="keywords" content="Colorlib Templates" />
 
-    <title>Locações - Locação</title>
+    <title>Devolver Locação - Locação</title>
 
     <link href="~/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" media="all" />
     <link href="~/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" media="all" />
@@ -40,11 +40,10 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">CLIENTE</th>
-                                        <th scope="col">FUNCIOANRIO</th>
                                         <th scope="col">VEICULO</th>
-                                        <th scope="col">LOCADO EM</th>
                                         <th scope="col">PREVISAO DE ENTREGA</th>
                                         <th scope="col">TOTAL LOCAÇÃO</th>
+                                        <th scope="col">DEVOLVIDO?</th>
                                         <th scope="col">STATUS</th>
                                     </tr>
                                 </thead>
@@ -62,12 +61,12 @@
                         }
                                         <tr>
                                             <td>@loc.cliente.nome</td>
-                                            <td>@loc.funcionario.nome</td>
                                             <td>@loc.veiculo.modelo</td>
-                                            <td>@loc.criadoEm</td>
                                             <td>@loc.previsaoEntrega</td>
                                             <td>@loc.totalLocacao</td>
                                             <td>@dev</td>
+                                            <td><a asp-action="Devolver" asp-controller="Locacao" asp-route-id="@loc.id" class="btn btn-dark">Devolver</a></td>
+
                                         </tr>}
                                 </tbody>
                             </table>

@@ -29,6 +29,13 @@ namespace LocacaoWeb.DAL
             _context.SaveChanges();
         }
 
+        public void Editar(Veiculo veiculo)
+        {
+
+            _context.Veiculos.Update(veiculo);
+            _context.SaveChanges();
+        }
+
         public Veiculo BuscarPorId(int id) => _context.Veiculos.Find(id);
         public List<Veiculo> Listar() => _context.Veiculos.ToList();
         public List<Veiculo> ListarDisponivel() => _context.Veiculos.Where(x => x.locado == false).ToList();

@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocacaoWeb.DAL
 {
@@ -32,7 +31,13 @@ namespace LocacaoWeb.DAL
             _context.Database.ExecuteSqlRaw("ALTER TABLE Locacoes NOCHECK CONSTRAINT FK_Locacoes_Funcionarios_funcionarioid");
             _context.Funcionarios.Remove(buscarPorId(id));
             _context.SaveChanges();
-       }
+        }
+
+        public void Editar(Funcionario funcionario)
+        {
+            _context.Funcionarios.Update(funcionario);
+            _context.SaveChanges();
+        }
 
         public List<Funcionario> Listar() => _context.Funcionarios.ToList();
 
