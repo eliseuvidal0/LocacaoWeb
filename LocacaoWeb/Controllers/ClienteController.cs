@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LocacaoWeb.DAL;
+﻿using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
@@ -43,12 +39,18 @@ namespace LocacaoWeb.Controllers
                     {
                         ModelState.AddModelError("", "**Cpf inválido!**");
                     }
-                }else
+                }
+                else
                 {
                     ModelState.AddModelError("", "**Menor de idade não pode ser cadastrado!**");
                 }
             }
             return View(cliente);
+        }
+        public IActionResult Remover(int id)
+        {
+            _clienteDAO.Remover(id);
+            return RedirectToAction("Index", "Cliente");
         }
     }
 }

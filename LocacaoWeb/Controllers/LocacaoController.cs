@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LocacaoWeb.DAL;
+﻿using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
@@ -40,23 +36,33 @@ namespace LocacaoWeb.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Locacao locacao)
         {
-
             //if (ModelState.IsValid)
             //{
-                locacao.cliente = _clienteDAO.buscarPorId(locacao.cliID);
-                locacao.funcionario = _funcionarioDAO.buscarPorId(locacao.funID);
-                locacao.veiculo = _veiculoDAO.BuscarPorId(locacao.vecID);
-                if (Validacao.ValidarCatCnh(locacao))
+            locacao.cliente = _clienteDAO.buscarPorId(locacao.cliID);
+            locacao.funcionario = _funcionarioDAO.buscarPorId(locacao.funID);
+            locacao.veiculo = _veiculoDAO.BuscarPorId(locacao.vecID);
+            if (Validacao.ValidarCatCnh(locacao))
+            {
+                if (locacao.veiculo.reservado == locacao.cliente.cpf || locacao.veiculo.reservado == "0")
                 {
                     if (_locacaoDAO.Cadastrar(locacao))
                     {
                         return RedirectToAction("Index", "Locacao");
                     }
-                    ModelState.AddModelError("", "Veículo LOCADO!");
-                } else
-                {
-                    ModelState.AddModelError("", "CNH INVÁLIDA!");
+                    else
+                    {
+                        ModelState.AddModelError("", "Veículo LOCADO!");
+                    }
                 }
+                else
+                {
+                    ModelState.AddModelError("", "Veículo RESERVADO!");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "CNH INVÁLIDA!");
+            }
             //}
 
             ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");

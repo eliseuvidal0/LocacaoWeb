@@ -1,8 +1,6 @@
 ﻿using LocacaoWeb.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocacaoWeb.DAL
 {
@@ -14,7 +12,10 @@ namespace LocacaoWeb.DAL
 
         public void Cadastrar(Reserva reserva)
         {
+            reserva.veiculo.reservado = reserva.cliente.cpf;
 
+            _context.Reservas.Add(reserva);
+            _context.SaveChanges();
         }
 
         public List<Reserva> Listar() => _context.Reservas.ToList();

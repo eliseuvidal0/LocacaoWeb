@@ -1,9 +1,7 @@
 ﻿using LocacaoWeb.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace LocacaoWeb.DAL
 {
@@ -33,6 +31,7 @@ namespace LocacaoWeb.DAL
 
         public Veiculo BuscarPorId(int id) => _context.Veiculos.Find(id);
         public List<Veiculo> Listar() => _context.Veiculos.ToList();
+        public List<Veiculo> ListarDisponivel() => _context.Veiculos.Where(x => x.locado == false).ToList();
         public Veiculo BuscarPlaca(string placa) => _context.Veiculos.FirstOrDefault(x => x.placa.Equals(placa));
 
     }

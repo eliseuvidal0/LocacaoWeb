@@ -29,12 +29,14 @@ namespace LocacaoWeb.Models
         [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual double valorDiaria { get; set; }
         public virtual bool locado { get; set; }
+        public virtual string reservado { get; set; }
         public virtual DateTime criadoEm { get; set; }
 
         public Veiculo()
         {
             this.criadoEm = DateTime.Now;
             this.locado = false;
+            this.reservado = "0";
         }
     }
 }

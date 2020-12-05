@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LocacaoWeb.DAL;
+﻿using LocacaoWeb.DAL;
+using LocacaoWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -23,7 +20,7 @@ namespace LocacaoWeb.Controllers
         public IActionResult Index()
         {
             ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");
-            ViewBag.Veiculo = new SelectList(_veiculoDAO.Listar(), "id", "modelo");
+            ViewBag.Veiculo = new SelectList(_veiculoDAO.ListarDisponivel(), "id", "modelo");
 
             return View();
         }
@@ -34,6 +31,15 @@ namespace LocacaoWeb.Controllers
             ViewBag.Veiculo = new SelectList(_veiculoDAO.Listar(), "id", "modelo");
 
             return View();
+        }
+
+        public IActionResult Cadastrar(Reserva reserva)
+        {
+            reserva.cliente = _clienteDAO.buscarPorId(reserva.cliID);
+            reserva.veiculo = _veiculoDAO.BuscarPorId(reserva.vecID);
+
+            return RedirectToAction("Index", "Home");
+
         }
     }
 }
