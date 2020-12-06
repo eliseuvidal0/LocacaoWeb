@@ -34,33 +34,34 @@ namespace LocacaoWeb.Controllers
 
             return View();
         }
+
         [HttpPost]
         public IActionResult Cadastrar(Locacao locacao)
         {
-            //if (ModelState.IsValid)
-            //{
-            locacao.cliente = _clienteDAO.buscarPorId(locacao.cliID);
-            locacao.funcionario = _funcionarioDAO.buscarPorId(locacao.funID);
-            locacao.veiculo = _veiculoDAO.BuscarPorId(locacao.vecID);
-            if (Validacao.ValidarCatCnh(locacao))
+            if (ModelState.IsValid)
             {
-                if (locacao.veiculo.reservado == locacao.cliente.cpf || locacao.veiculo.reservado == "0")
+                locacao.cliente = _clienteDAO.buscarPorId(locacao.cliID);
+                locacao.funcionario = _funcionarioDAO.buscarPorId(locacao.funID);
+                locacao.veiculo = _veiculoDAO.BuscarPorId(locacao.vecID);
+                if (Validacao.ValidarCatCnh(locacao))
                 {
-                    locacao.veiculo.reservado = "0";
+                    if (locacao.veiculo.reservado == locacao.cliente.cpf || locacao.veiculo.reservado == "0")
+                    {
+                        locacao.veiculo.reservado = "0";
 
-                    _locacaoDAO.Cadastrar(locacao);
-                    return RedirectToAction("Index", "Locacao");
+                        _locacaoDAO.Cadastrar(locacao);
+                        return RedirectToAction("Index", "Locacao");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Veículo RESERVADO!");
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Veículo RESERVADO!");
+                    ModelState.AddModelError("", "CNH INVÁLIDA!");
                 }
             }
-            else
-            {
-                ModelState.AddModelError("", "CNH INVÁLIDA!");
-            }
-            //}
 
             ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");
             ViewBag.Funcionario = new SelectList(_funcionarioDAO.Listar(), "id", "nome");
@@ -80,7 +81,7 @@ namespace LocacaoWeb.Controllers
 
             loc.dataEntrega = DateTime.Now;
             loc.devolvido = true;
-            loc.veiculo.locado = false;
+            
 
             if (loc.dataEntrega.Month > loc.previsaoEntrega.Month)
             {

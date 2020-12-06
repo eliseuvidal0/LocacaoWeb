@@ -43,6 +43,8 @@ namespace LocacaoWeb.DAL
 
         public Funcionario buscarCpf(String cpf) => _context.Funcionarios.FirstOrDefault(x => x.cpf.Equals(cpf));
 
-        public Funcionario buscarPorId(int id) => _context.Funcionarios.Find(id);
+        public Funcionario buscarPorId(int id) => _context.Funcionarios.Find(id);   
+
+        /*public List<Funcionario> BuscaAvancada(String cpf) => (List<Funcionario>)_context.Funcionarios.Where(x => x.cpf.Contains(cpf));*/
     }
 }

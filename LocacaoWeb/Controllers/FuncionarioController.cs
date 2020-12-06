@@ -2,6 +2,9 @@
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LocacaoWeb.Controllers
 {
@@ -15,6 +18,23 @@ namespace LocacaoWeb.Controllers
         {
             return View(_funcionarioDAO.Listar());
         }
+
+        /*[HttpGet]
+        public IActionResult Index(string cpf)
+        {
+
+            List<Funcionario> fun = _funcionarioDAO.BuscaAvancada(cpf);
+
+
+            if (!String.IsNullOrEmpty(cpf))
+            {
+                fun = _funcionarioDAO.BuscaAvancada(cpf);
+
+                return RedirectToAction("Index", "Funcionario");
+            }
+
+            return View(fun.ToList());
+        }*/
 
         public IActionResult Cadastrar() => View();
 
