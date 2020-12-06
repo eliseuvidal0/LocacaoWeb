@@ -48,9 +48,9 @@
                                     <div class="input-group">
                                         <div class="rs-select2 js-select-simple select--no-search">
                                             <label asp-for="marca" />
-                                            <select asp-for="marca">
+                                            <select asp-for="marca" class="form-control">
                                             </select>
-                                            <span asp-validation-for="marca" />
+                                            <span class="text-danger" asp-validation-for="marca" />
                                             <div class="select-dropdown"></div>
                                         </div>
                                     </div>
@@ -98,6 +98,22 @@
     </section>
 
     <!--<script src="C:\Users\Solução Informática\Desktop\WebLocacao\LocacaoWeb\LocacaoWeb\Utility\js.js"></script>-->
+    <script>
+        let dropdown = $('#marca');
+
+        dropdown.empty();
+
+        dropdown.append('<option selected="true" disabled>- Selecione -');
+        dropdown.prop('selectedIndex', 0);
+
+        const url = 'https://parallelum.com.br/fipe/api/v1/carros/marcas';
+
+        $.getJSON(url, function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.nome).text(entry.nome));
+            })
+        });
+    </script>
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/select2/select2.min.js"></script>
     <script src="~/vendor/datepicker/moment.min.js"></script>

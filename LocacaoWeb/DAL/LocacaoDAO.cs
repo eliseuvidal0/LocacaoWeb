@@ -22,7 +22,7 @@ namespace LocacaoWeb.DAL
 
         public void Alterar(Locacao locacao)
         {
-            locacao.veiculo.locado = false;
+            
             _context.Locacoes.Update(locacao);
             _context.SaveChanges();
         }

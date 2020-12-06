@@ -12,5 +12,14 @@ namespace LocacaoWeb.Controllers
         {
             return View();
         }
+        public IActionResult Portal()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
     }
 }

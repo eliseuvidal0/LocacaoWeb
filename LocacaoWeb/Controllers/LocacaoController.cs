@@ -38,8 +38,8 @@ namespace LocacaoWeb.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Locacao locacao)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 locacao.cliente = _clienteDAO.buscarPorId(locacao.cliID);
                 locacao.funcionario = _funcionarioDAO.buscarPorId(locacao.funID);
                 locacao.veiculo = _veiculoDAO.BuscarPorId(locacao.vecID);
@@ -61,7 +61,7 @@ namespace LocacaoWeb.Controllers
                 {
                     ModelState.AddModelError("", "CNH INVÁLIDA!");
                 }
-            }
+            //}
 
             ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");
             ViewBag.Funcionario = new SelectList(_funcionarioDAO.Listar(), "id", "nome");
@@ -81,7 +81,11 @@ namespace LocacaoWeb.Controllers
 
             loc.dataEntrega = DateTime.Now;
             loc.devolvido = true;
-            
+            Veiculo vec = _veiculoDAO.BuscarPorId(loc.vecID);
+
+            vec.locado = false;
+            _veiculoDAO.Editar(vec);
+
 
             if (loc.dataEntrega.Month > loc.previsaoEntrega.Month)
             {
@@ -137,6 +141,7 @@ namespace LocacaoWeb.Controllers
                 //MessageBox.Show($"Veículo entregue na data esperada!", "Locação - WPF",
                 //                        MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
 
             return RedirectToAction("Devolucao", "Locacao");
         }
