@@ -39,6 +39,7 @@ namespace LocacaoWeb.Controllers
             reserva.cliente = _clienteDAO.buscarPorId(reserva.cliID);
             reserva.veiculo = _veiculoDAO.BuscarPorId(reserva.vecID);
 
+            _reservaDAO.Cadastrar(reserva);
             return RedirectToAction("Index", "Home");
 
         }

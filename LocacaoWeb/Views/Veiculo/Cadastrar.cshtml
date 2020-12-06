@@ -20,17 +20,7 @@
 </head>
 <body>
     <!--<header>
-        <div class="container">
-            <nav class="menu">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
-            </nav>
-        </div>
+
     </header>-->
     <section>
         <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
@@ -56,9 +46,13 @@
                                 <div class="name">Marca</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" asp-for="marca">
-                                        <label asp-for="marca" />
-                                        <span asp-validation-for="marca" />
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <label asp-for="marca" />
+                                            <select asp-for="marca">
+                                            </select>
+                                            <span asp-validation-for="marca" />
+                                            <div class="select-dropdown"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -92,24 +86,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="name">Tipo</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <div class="rs-select2 js-select-simple select--no-search">
-                                            <label asp-for="tipo" />
-                                            <select asp-for="tipo">
-                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
-                                                <option value="Carro">Carro</option>
-                                                <option value="Moto">Moto</option>
-                                                <option value="Caminhao">Caminhão</option>
-                                            </select>
-                                            <span asp-validation-for="tipo" />
-                                            <div class="select-dropdown"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div>
                                 <button class="btn btn--radius-2 btn--red" type="submit" value="Cadastrar">Cadastrar</button>
                             </div>
@@ -120,6 +97,7 @@
         </div>
     </section>
 
+    <!--<script src="C:\Users\Solução Informática\Desktop\WebLocacao\LocacaoWeb\LocacaoWeb\Utility\js.js"></script>-->
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/select2/select2.min.js"></script>
     <script src="~/vendor/datepicker/moment.min.js"></script>
@@ -129,4 +107,3 @@
 </body>
 
 </html>
-
