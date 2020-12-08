@@ -7,6 +7,7 @@ using LocacaoWeb.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,9 +32,19 @@ namespace LocacaoWeb
             services.AddScoped<LocacaoDAO>();
             services.AddScoped<VeiculoDAO>();
             services.AddScoped<ReservaDAO>();
+            //services.AddScoped<Sessao>();
+            services.AddHttpContextAccessor();
 
             services.AddDbContext<Context>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("Connection")));
+
+            services.AddIdentity<Gerente, IdentityRole>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Gerente/Login";
+                options.AccessDeniedPath = "/Gerente/AcessoNegado";
+            });
 
             services.AddSession();
             services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -57,7 +68,11 @@ namespace LocacaoWeb
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

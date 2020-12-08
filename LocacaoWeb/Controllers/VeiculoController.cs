@@ -19,7 +19,7 @@ namespace LocacaoWeb.Controllers
             return View(_veiculoDAO.Listar());
         }
         public IActionResult Cadastrar() => View();
-
+        public IActionResult teste() => View();
         [HttpPost]
         public IActionResult Cadastrar(Veiculo veiculo)
         {

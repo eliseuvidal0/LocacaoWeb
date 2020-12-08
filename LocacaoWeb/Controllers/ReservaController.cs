@@ -43,5 +43,10 @@ namespace LocacaoWeb.Controllers
             return RedirectToAction("Index", "Home");
 
         }
+
+        public IActionResult Reservados()
+        {
+            return View(_reservaDAO.ListarReservados());
+        }
     }
 }

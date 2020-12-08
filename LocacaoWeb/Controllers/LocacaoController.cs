@@ -13,13 +13,15 @@ namespace LocacaoWeb.Controllers
         private readonly ClienteDAO _clienteDAO;
         private readonly FuncionarioDAO _funcionarioDAO;
         private readonly VeiculoDAO _veiculoDAO;
+        private readonly ReservaDAO _reservaDAO;
 
-        public LocacaoController(LocacaoDAO locacaoDAO, ClienteDAO clienteDAO, FuncionarioDAO funcionarioDAO, VeiculoDAO veiculoDAO)
+        public LocacaoController(LocacaoDAO locacaoDAO, ClienteDAO clienteDAO, FuncionarioDAO funcionarioDAO, VeiculoDAO veiculoDAO, ReservaDAO reservaDAO)
         {
             _locacaoDAO = locacaoDAO;
             _clienteDAO = clienteDAO;
             _funcionarioDAO = funcionarioDAO;
             _veiculoDAO = veiculoDAO;
+            _reservaDAO = reservaDAO;
         }
         public IActionResult Index()
         {
@@ -43,11 +45,15 @@ namespace LocacaoWeb.Controllers
                 locacao.cliente = _clienteDAO.buscarPorId(locacao.cliID);
                 locacao.funcionario = _funcionarioDAO.buscarPorId(locacao.funID);
                 locacao.veiculo = _veiculoDAO.BuscarPorId(locacao.vecID);
+                Veiculo aux = _veiculoDAO.BuscarPorId(locacao.vecID);
+
                 if (Validacao.ValidarCatCnh(locacao))
                 {
                     if (locacao.veiculo.reservado == locacao.cliente.cpf || locacao.veiculo.reservado == "0")
                     {
-                        locacao.veiculo.reservado = "0";
+                        aux.reservado = "0";
+                        _veiculoDAO.Editar(aux);
+                        RemoverReserva(aux);
 
                         _locacaoDAO.Cadastrar(locacao);
                         return RedirectToAction("Index", "Locacao");
@@ -144,6 +150,18 @@ namespace LocacaoWeb.Controllers
 
 
             return RedirectToAction("Devolucao", "Locacao");
+        }
+
+        private void RemoverReserva(Veiculo veiculo)
+        {
+            foreach (Reserva re in _reservaDAO.ListarReservados())
+            {
+                if(veiculo.id == re.vecID)
+                {
+                    re.ativo = false;
+                    _reservaDAO.Editar(re);
+                }
+            }
         }
     }
 }

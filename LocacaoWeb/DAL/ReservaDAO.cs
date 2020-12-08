@@ -1,4 +1,5 @@
 ﻿using LocacaoWeb.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,7 +19,14 @@ namespace LocacaoWeb.DAL
             _context.SaveChanges();
         }
 
-        public List<Reserva> Listar() => _context.Reservas.ToList();
-        public List<Reserva> ListarReservados() => _context.Reservas.Where(x => x.ativo == true).ToList();
+        public void Editar(Reserva reserva)
+        {
+
+            _context.Reservas.Update(reserva);
+            _context.SaveChanges();
+        }
+
+        public List<Reserva> Listar() => _context.Reservas.Include(x => x.cliente).Include(x => x.veiculo).ToList();
+        public List<Reserva> ListarReservados() => _context.Reservas.Include(x => x.cliente).Include(x => x.veiculo).Where(x => x.ativo == true).ToList();
     }
 }
