@@ -46,7 +46,6 @@ namespace LocacaoWeb
                 options.AccessDeniedPath = "/Gerente/AcessoNegado";
             });
 
-            services.AddSession();
             services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
@@ -72,7 +71,6 @@ namespace LocacaoWeb
 
             app.UseAuthorization();
 
-            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

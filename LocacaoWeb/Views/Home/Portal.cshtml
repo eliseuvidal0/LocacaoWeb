@@ -27,6 +27,9 @@
 
     <section>
         <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+            <div style="text-align: right; margin: 20px 200px 10px 0">
+                <a asp-action="Logout" asp-controller="Gerente" class="btn btn--radius-2 btn--red">Logout</a>
+            </div>
             <div class="wrapper wrapper--w960">
                 <div class="card card-5">
                     <div class="card-heading">
@@ -34,42 +37,59 @@
                     </div>
                     <div class="card-body">
                         <div class="card-deck">
-
-                            <div class="card-5 btn btn--radius-2 btn--green"style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Index" asp-controller="Veiculo">Listar Veículos</a>
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Index" asp-controller="Veiculo">Listar Veículos</a>
+                                </div>
                             </div>
-                            <div class="portal card-5 btn btn--radius-2 btn--green"style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Index" asp-controller="Cliente">Listar Clientes</a>
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="portal card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Index" asp-controller="Cliente">Listar Clientes</a>
+                                </div>
                             </div>
-                            <div class="portal card-5 btn btn--radius-2 btn--green"style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Index" asp-controller="Funcionario">Listar Funcionários</a>
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="portal card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Index" asp-controller="Funcionario">Listar Funcionários</a>
+                                </div>
                             </div>
-                            <div class="card-5 btn btn--radius-2 btn--green"style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Index" asp-controller="Locacao">Listar Locações</a>
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Index" asp-controller="Locacao">Listar Locações</a>
+                                </div>
                             </div>
-                            <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Devolucao" asp-controller="Locacao">Devolver Veículos</a>
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Devolucao" asp-controller="Locacao">Devolver Veículos</a>
+                                </div>
                             </div>
-                            <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Reservados" asp-controller="Reserva">Listar Reservas</a>
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Reservados" asp-controller="Reserva">Listar Reservas</a>
+                                </div>
                             </div>
-                            <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Cadastrar" asp-controller="Funcionario">Novo Funcionário</a>
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Cadastrar" asp-controller="Funcionario">Novo Funcionário</a>
+                                </div>
                             </div>
-                            <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Cadastrar" asp-controller="Veiculo">Novo Veículo</a>
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Cadastrar" asp-controller="Veiculo">Novo Veículo</a>
+                                </div>
                             </div>
-                            <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
-                                <a asp-action="Cadastrar" asp-controller="Locacao">Locar Veículo</a>
-                            </div>
-                            
+                            <div class="col-md-4" style="text-align:center">
+                                <div class="card-5 btn btn--radius-2 btn--green" style="padding:10px; margin: 5px; border: 2px solid #202020;">
+                                    <a asp-action="Cadastrar" asp-controller="Locacao">Locar Veículo</a>
+                                </div>
                             </div>
 
                         </div>
-                        
+
                     </div>
-                    </div>
+
+                </div>
             </div>
+        </div>
         </div>
     </section>
 

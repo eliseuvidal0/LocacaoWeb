@@ -1,5 +1,6 @@
 ﻿using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -25,25 +26,25 @@ namespace LocacaoWeb.Controllers
             return View();
         }
 
-        public IActionResult Cadastrar()
-        {
-            ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");
-            ViewBag.Veiculo = new SelectList(_veiculoDAO.Listar(), "id", "modelo");
-
-            return View();
-        }
-
         [HttpPost]
         public IActionResult Cadastrar(Reserva reserva)
         {
-            reserva.cliente = _clienteDAO.buscarPorId(reserva.cliID);
-            reserva.veiculo = _veiculoDAO.BuscarPorId(reserva.vecID);
+            if (ModelState.IsValid)
+            {
+                reserva.cliente = _clienteDAO.buscarPorId(reserva.cliID);
+                reserva.veiculo = _veiculoDAO.BuscarPorId(reserva.vecID);
 
-            _reservaDAO.Cadastrar(reserva);
-            return RedirectToAction("Index", "Home");
+                _reservaDAO.Cadastrar(reserva);
+                return RedirectToAction("Index", "Home");
+            }
 
+            ModelState.AddModelError("", "Por favor, Preencha todos os campos!");
+            ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");
+            ViewBag.Veiculo = new SelectList(_veiculoDAO.Listar(), "id", "modelo");
+            return View(reserva);
         }
 
+        [Authorize]
         public IActionResult Reservados()
         {
             return View(_reservaDAO.ListarReservados());

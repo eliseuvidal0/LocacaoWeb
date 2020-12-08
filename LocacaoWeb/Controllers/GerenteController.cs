@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LocacaoWeb.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LocacaoWeb.Controllers
 {
+    [Authorize]
     public class GerenteController : Controller
     {
         private readonly Context _context;
@@ -24,12 +26,14 @@ namespace LocacaoWeb.Controllers
         }
 
         // GET: Gerente
+        
         public async Task<IActionResult> Index()
         {
             return View(await _context.Gerentes.ToListAsync());
         }
 
         // GET: Gerente/Details/5
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,6 +52,7 @@ namespace LocacaoWeb.Controllers
         }
 
         // GET: Gerente/Create
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
@@ -58,6 +63,7 @@ namespace LocacaoWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([Bind("id,email,senha,confirmarSenha")] GerenteView gerenteView)
         {
             if (ModelState.IsValid)
@@ -81,6 +87,40 @@ namespace LocacaoWeb.Controllers
             return View(gerenteView);
         }
 
+        [AllowAnonymous]
+        public IActionResult Login() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login([Bind("email, senha")] GerenteView gerenteView) 
+        {
+
+            //if (ModelState.IsValid)
+            //{
+                var resultado = await _signInManager.PasswordSignInAsync(gerenteView.email, gerenteView.senha, false, false);
+
+                string name = User.Identity.Name;
+
+                if (resultado.Succeeded)
+                {
+                    return RedirectToAction("Portal", "Home");
+                }
+                ModelState.AddModelError("", "Login ou senha inválidos!");
+            //}
+            //ModelState.AddModelError("", "Por favor, Preencha todos os campos!");
+            return View(gerenteView);
+        }
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
         public void AdicionarErros(IdentityResult resultado)
         {
             foreach (IdentityError erro in resultado.Errors)
@@ -88,7 +128,7 @@ namespace LocacaoWeb.Controllers
                 ModelState.AddModelError("", erro.Description);
             }
         }
-
+        
         // GET: Gerente/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -110,6 +150,7 @@ namespace LocacaoWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Edit(int id, [Bind("id,email,senha")] GerenteView gerenteView)
         {
             if (id != gerenteView.id)
@@ -141,6 +182,7 @@ namespace LocacaoWeb.Controllers
         }
 
         // GET: Gerente/Delete/5
+        
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -161,6 +203,7 @@ namespace LocacaoWeb.Controllers
         // POST: Gerente/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var gerenteView = await _context.Gerentes.FindAsync(id);

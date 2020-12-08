@@ -13,10 +13,12 @@ namespace LocacaoWeb.DAL
 
         public void Cadastrar(Reserva reserva)
         {
-            reserva.veiculo.reservado = reserva.cliente.cpf;
+           
+                reserva.veiculo.reservado = reserva.cliente.cpf;
 
-            _context.Reservas.Add(reserva);
-            _context.SaveChanges();
+                _context.Reservas.Add(reserva);
+                _context.SaveChanges();
+
         }
 
         public void Editar(Reserva reserva)

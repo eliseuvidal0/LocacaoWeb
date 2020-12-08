@@ -34,7 +34,7 @@
                     </div>
                     <div class="card-body">
                         <form asp-action="Cadastrar" asp-controller="Reserva" method="post">
-
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-row">
                                 <div class="name">Selecionar Cliente</div>
                                 <div class="value">

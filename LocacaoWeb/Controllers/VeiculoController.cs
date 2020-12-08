@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LocacaoWeb.Controllers
 {
+    [Authorize]
     public class VeiculoController : Controller
     {
         private readonly VeiculoDAO _veiculoDAO;

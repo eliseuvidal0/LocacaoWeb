@@ -1,4 +1,5 @@
-﻿@model Funcionario
+﻿@model GerenteView
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,7 +10,7 @@
     <meta name="author" content="Colorlib" />
     <meta name="keywords" content="Colorlib Templates" />
 
-    <title>Editar - Funcionário</title>
+    <title>Cadastrar - Funcionário</title>
 
     <link href="~/vendor/mdi-font/css/material-design-iconic-font.css" rel="stylesheet" media="all" />
     <link href="~/vendor/font-awesome-4.7/css/font-awesome.css" rel="stylesheet" media="all" />
@@ -25,37 +26,14 @@
     </header>-->
     <section>
         <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
-            <div style="text-align: right; margin: 20px 200px 10px 0">
-                <a asp-action="Logout" asp-controller="Gerente" class="btn btn--radius-2 btn--red">Logout</a>
-            </div>
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
-                        <h2 class="title">Editar Funcionário</h2>
+                        <h2 class="title">Login do ADM</h2>
                     </div>
                     <div class="card-body">
-                        <form asp-action="Editar" asp-controller="Funcionario" method="post">
-                            <div asp-validation-summary="ModelOnly"></div>
-                            <div class="form-row">
-                                <div class="name">Nome</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" asp-for="nome">
-                                        <label asp-for="nome" />
-                                        <span asp-validation-for="nome" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="name">CPF</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <input class="input--style-5" type="text" asp-for="cpf">
-                                        <label asp-for="cpf" />
-                                        <span asp-validation-for="cpf" />
-                                    </div>
-                                </div>
-                            </div>
+                        <form asp-action="Login" asp-controller="Gerente" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-row">
                                 <div class="name">Email</div>
                                 <div class="value">
@@ -66,8 +44,19 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-row">
+                                <div class="name">Senha</div>
+                                <div class="value">
+                                    <div class="input-group">
+                                        <input class="input--style-5" type="password" asp-for="senha">
+                                        <label asp-for="senha" />
+                                        <span asp-validation-for="senha" />
+                                    </div>
+                                </div>
+                            </div>
                             <div>
-                                <button class="btn btn--radius-2 btn--red" type="submit" value="Editar">Editar</button>
+                                <button class="btn btn--radius-2 btn--red" type="submit" value="login">Login</button>
                             </div>
                         </form>
                     </div>

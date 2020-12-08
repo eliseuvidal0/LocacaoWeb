@@ -29,6 +29,9 @@
     </header>-->
     <section>
         <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+            <div style="text-align: right; margin: 20px 200px 10px 0">
+                <a asp-action="Logout" asp-controller="Gerente" class="btn btn--radius-2 btn--red">Logout</a>
+            </div>
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
                     <div class="card-heading">
@@ -37,9 +40,9 @@
                     <div class="card-body">
                         <form>
                             <!--<div>
-        CPF: <input type="text" name="cpf"/>
-        <input type="submit" value="Buscar"/>
-    </div>-->
+                        CPF: <input type="text" name="cpf"/>
+                        <input type="submit" value="Buscar"/>
+                    </div>-->
                             <table class="table">
                                 <thead class="thead-dark">
                                     <tr>
@@ -60,7 +63,7 @@
                                             <td><a asp-action="Editar" asp-controller="Funcionario" asp-route-id="@funcionario.id" class="btn btn-primary" role="button">Editar</a></td>
                                             <td><a asp-action="Remover" asp-controller="Funcionario" asp-route-id="@funcionario.id" class="btn btn-danger">Excluir</a></td>
                                         </tr>
-                                     }
+                                    }
                                 </tbody>
                             </table>
                         </form>

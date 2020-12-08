@@ -1,12 +1,14 @@
 ﻿using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 
 namespace LocacaoWeb.Controllers
 {
+    [Authorize]
     public class LocacaoController : Controller
     {
         private readonly LocacaoDAO _locacaoDAO;

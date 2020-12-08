@@ -1,11 +1,13 @@
 ﻿using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace LocacaoWeb.Controllers
 {
+    [Authorize]
     public class ClienteController : Controller
     {
         private readonly ClienteDAO _clienteDAO;
@@ -15,10 +17,12 @@ namespace LocacaoWeb.Controllers
             return View(_clienteDAO.Listar());
         }
 
-        public IActionResult Cadastrar() => View();
         public IActionResult Listar() => View(_clienteDAO.Listar());
 
+        [AllowAnonymous]
+        public IActionResult Cadastrar() => View();
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Cadastrar(Cliente cliente)
         {
             if (ModelState.IsValid)

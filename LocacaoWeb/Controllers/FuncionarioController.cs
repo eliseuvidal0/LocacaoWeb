@@ -1,6 +1,7 @@
 ﻿using LocacaoWeb.DAL;
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 
 namespace LocacaoWeb.Controllers
 {
+    [Authorize]
     public class FuncionarioController : Controller
     {
         private readonly FuncionarioDAO _funcionarioDAO;
