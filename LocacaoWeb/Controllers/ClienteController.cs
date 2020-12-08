@@ -2,6 +2,7 @@
 using LocacaoWeb.Models;
 using LocacaoWeb.Utility;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace LocacaoWeb.Controllers
 {
@@ -63,6 +64,14 @@ namespace LocacaoWeb.Controllers
             _clienteDAO.Editar(cliente);
 
             return RedirectToAction("Index", "Cliente");
+        }
+
+        [HttpGet]
+        [Route("Buscar/{cpf}")]
+        public List<Cliente> ListarPorBusca(string cpf)
+        {
+            var Cliente = _clienteDAO.BuscarPorCpf(cpf);
+            return Cliente;
         }
     }
 }
