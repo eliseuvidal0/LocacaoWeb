@@ -46,6 +46,10 @@ namespace LocacaoWeb.Controllers
                     ModelState.AddModelError("", "**Menor de idade não pode ser cadastrado!**");
                 }
             }
+            else
+            {
+                ModelState.AddModelError("", "**Preencha todos os campos!**");
+            }
             return View(cliente);
         }
         public IActionResult Remover(int id)
@@ -64,14 +68,6 @@ namespace LocacaoWeb.Controllers
             _clienteDAO.Editar(cliente);
 
             return RedirectToAction("Index", "Cliente");
-        }
-
-        [HttpGet]
-        [Route("Buscar/{cpf}")]
-        public List<Cliente> ListarPorBusca(string cpf)
-        {
-            var Cliente = _clienteDAO.BuscarPorCpf(cpf);
-            return Cliente;
         }
     }
 }

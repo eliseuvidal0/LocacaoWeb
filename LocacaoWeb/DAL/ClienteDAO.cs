@@ -44,20 +44,7 @@ namespace LocacaoWeb.DAL
 
         public Cliente buscarCpf(String cpf) => _context.Clientes.FirstOrDefault(x => x.cpf.Equals(cpf));
 
-        public Cliente buscarPorId(int id) => _context.Clientes.Find(id);
-
-        /*public bool BuscarPorCpf(String cpf)
-        {
-            var x = _context.Clientes.FirstOrDefault(x => x.cpf == cpf);
-            if (x != null)
-            {
-                return false;
-            }
-            return true;
-        }*/
-
-        public List<Cliente> BuscarPorCpf(string cpf) => _context.Clientes.Where(x => x.cpf.Contains(cpf)).ToList();
-        
+        public Cliente buscarPorId(int id) => _context.Clientes.Find(id);        
 
     }
 }

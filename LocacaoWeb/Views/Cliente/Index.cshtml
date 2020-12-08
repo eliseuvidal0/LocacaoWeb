@@ -22,8 +22,6 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" rel="stylesheet" media="all" />
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="all" />
 
-    <script src="https://kit.fontawesome.com/0aa0d458c6.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
     <!--<header>
@@ -51,10 +49,6 @@
                         <h2 class="title">Listar Clientes</h2>
                     </div>
                     <div class="card-body">
-
-                        <input class="inputDoSearch" id="inputDoSearch" type="text" placeholder="Digite o CPF do cliente" />
-                        <a class="btn-buscar" id="btn-buscar"><i class="fas fa-search-plus"></i>Buscar</a>
-
                         <form>
                             <table class="table">
                                 <thead class="thead-dark">
@@ -69,7 +63,7 @@
                                         <th scope="col">EXCLUIR</th>
                                     </tr>
                                 </thead>
-                                <tbody id="bodyTable">
+                                <tbody>
                                     @foreach (Cliente cli in Model)
                                     {
                                         <tr>
@@ -100,54 +94,6 @@
 
     <!--<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>-->
-
-    <script>
-        var tableBody = document.getElementById("bodyTable");
-        var btnBuscar = document.getElementById("btn-buscar");
-        var InputBusca = document.getElementById("inputDoSearch");
-        var clienteBuscado = [];
-
-        var url = "https://localhost:5001/Cliente/Buscar/";
-
-        btnBuscar.addEventListener("click", () => {
-            url = url + InputBusca.value;
-            buscarCliente();
-            console.log(clienteBuscado);
-        });
-
-        const buscarCliente = () => {
-            fetch(url, { method: "GET" })
-                .then(response => response.json())
-                .then(json => {
-                    for (let x = 0; x < json.length; x++) {
-                        clienteBuscado.push(json[x]);
-                    }
-                    povoaTemplate(clienteBuscado);
-                })
-                .catch(error => console.log(error));
-        }
-
-        function povoaTemplate(cliente) {
-            var templateRow = [];
-            for (let i = 0; i < cliente.length; i++) {
-                templateRow.push(
-                    `<tr>
-
-                                <td>${cliente[i].nome}</td>
-                                <td>${cliente[i].cpf}</td>
-                                <td>${cliente[i].email}</td>
-                                <td>${cliente[i].telefone}</td>
-                                <td>${cliente[i].nascimento}</td>
-                                <td>${cliente[i].cnh}</td>
-
-                            </tr>`
-                );
-            }
-            console.log(templateRow);
-            tableBody.innerHTML = "";
-            tableBody.innerHTML = templateRow;
-        }
-    </script>
 
 </body>
 </html>
