@@ -37,8 +37,12 @@ namespace LocacaoWeb.Controllers
                 _reservaDAO.Cadastrar(reserva);
                 return RedirectToAction("Index", "Home");
             }
+            else
+            {
+                ModelState.AddModelError("", "**Preencha todos os campos!**");
+            }
 
-            ModelState.AddModelError("", "Por favor, Preencha todos os campos!");
+            /*ModelState.AddModelError("", "Por favor, Preencha todos os campos!");*/
             ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");
             ViewBag.Veiculo = new SelectList(_veiculoDAO.Listar(), "id", "modelo");
             return View(reserva);

@@ -52,7 +52,6 @@ namespace LocacaoWeb.Controllers
         }
 
         // GET: Gerente/Create
-        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
@@ -63,7 +62,6 @@ namespace LocacaoWeb.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
         public async Task<IActionResult> Create([Bind("id,email,senha,confirmarSenha")] GerenteView gerenteView)
         {
             if (ModelState.IsValid)

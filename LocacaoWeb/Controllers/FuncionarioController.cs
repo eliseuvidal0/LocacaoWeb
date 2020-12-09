@@ -60,7 +60,10 @@ namespace LocacaoWeb.Controllers
                 {
                     ModelState.AddModelError("", "**Cpf inválido!**");
                 }
-
+            }
+            else
+            {
+                ModelState.AddModelError("", "**Preencha todos os campos!**");
             }
             return View(funcionario);
         }

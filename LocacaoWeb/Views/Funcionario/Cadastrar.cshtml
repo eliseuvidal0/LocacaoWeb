@@ -18,12 +18,30 @@
     <link href="~/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
     <link href="~/css/cadastrar.css" rel="stylesheet" media="all">
 
+    <link href="~/lib/bootstrap/dist/css/bootstrap-grid.css" rel="stylesheet" media="all" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.css" rel="stylesheet" media="all" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="all" />
+
 </head>
 <body>
     <!--<header>
 
     </header>-->
     <section>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <!--<button class="navbar-brand disabled">Listar Clientes</button>-->
+                <a asp-action="Portal" asp-controller="Home" class="navbar-brand" role="button">Portal</a>
+                <a asp-action="Cadastrar" asp-controller="Locacao" class="navbar-brand" role="button">Cadastrar Locacao</a>
+                <a asp-action="Cadastrar" asp-controller="Cliente" class="navbar-brand" role="button">Cadastrar Cliente</a>
+                <a asp-action="Index" asp-controller="Funcionario" class="navbar-brand" role="button">Listar Funcionários</a>
+                <a asp-action="Cadastrar" asp-controller="Veiculo" class="navbar-brand" role="button">Cadastrar Veículo</a>
+                <a asp-action="Index" asp-controller="Veiculo" class="navbar-brand" role="button">Listar Veículos</a>
+                <a asp-action="Index" asp-controller="Locacao" class="navbar-brand" role="button">Listar Locações</a>
+                <a asp-action="Reservados" asp-controller="Reserva" class="navbar-brand" role="button">Listar Reservas</a>
+                <a asp-action="Devolucao" asp-controller="Locacao" class="navbar-brand" role="button">Devolver Veículos</a>
+            </div>
+        </nav>
         <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
             <div style="text-align: right; margin: 20px 200px 10px 0">
                 <a asp-action="Logout" asp-controller="Gerente" class="btn btn--radius-2 btn--red">Logout</a>
@@ -81,6 +99,8 @@
     <script src="~/vendor/datepicker/moment.min.js"></script>
     <script src="~/vendor/datepicker/daterangepicker.js"></script>
     <script src="~/js/cadastrar.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 </body>
 </html>
