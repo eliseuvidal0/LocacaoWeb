@@ -49,8 +49,7 @@ namespace LocacaoWeb.Controllers
                 locacao.veiculo = _veiculoDAO.BuscarPorId(locacao.vecID);
                 Veiculo aux = _veiculoDAO.BuscarPorId(locacao.vecID);
 
-                if (Validacao.ValidarCatCnh(locacao))
-                {
+                
                     if (locacao.veiculo.reservado == locacao.cliente.cpf || locacao.veiculo.reservado == "0")
                     {
                         aux.reservado = "0";
@@ -64,11 +63,7 @@ namespace LocacaoWeb.Controllers
                     {
                         ModelState.AddModelError("", "Veículo RESERVADO!");
                     }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "CNH INVÁLIDA!");
-                }
+                
             //}
 
             ViewBag.Cliente = new SelectList(_clienteDAO.Listar(), "id", "nome");

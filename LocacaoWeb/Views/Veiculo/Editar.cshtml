@@ -49,9 +49,12 @@
                                 <div class="name">Marca</div>
                                 <div class="value">
                                     <div class="input-group">
-                                        <input class="input--style-5" type="text" asp-for="marca">
-                                        <label asp-for="marca" />
-                                        <span asp-validation-for="marca" />
+                                        <div class="input--style-5">
+                                            <label asp-for="marca" />
+                                            <select asp-for="marca" class="form-control">
+                                            </select>
+                                            <span class="text-danger" asp-validation-for="marca" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -85,24 +88,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="name">Tipo</div>
-                                <div class="value">
-                                    <div class="input-group">
-                                        <div class="rs-select2 js-select-simple select--no-search">
-                                            <label asp-for="tipo" />
-                                            <select asp-for="tipo">
-                                                <option disabled="disabled" selected="selected">Escolha a opção</option>
-                                                <option value="Carro">Carro</option>
-                                                <option value="Moto">Moto</option>
-                                                <option value="Caminhao">Caminhão</option>
-                                            </select>
-                                            <span asp-validation-for="tipo" />
-                                            <div class="select-dropdown"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div>
                                 <button class="btn btn--radius-2 btn--red" type="submit" value="Editar">Editar</button>
                             </div>
@@ -118,6 +104,23 @@
     <script src="~/vendor/datepicker/moment.min.js"></script>
     <script src="~/vendor/datepicker/daterangepicker.js"></script>
     <script src="~/js/cadastrar.js"></script>
+
+    <script>
+        let dropdown = $('#marca');
+
+        dropdown.empty();
+
+        dropdown.append('<option selected="true" disabled>- Selecione -');
+        dropdown.prop('selectedIndex', 0);
+
+        const url = 'https://parallelum.com.br/fipe/api/v1/carros/marcas';
+
+        $.getJSON(url, function (data) {
+            $.each(data, function (key, entry) {
+                dropdown.append($('<option></option>').attr('value', entry.nome).text(entry.nome));
+            })
+        });
+    </script>
 
 </body>
 

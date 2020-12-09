@@ -43,10 +43,9 @@ namespace LocacaoWeb.Controllers
                     ModelState.AddModelError("", "PLACA INVÁLIDA!");
                 }
             }
-            else
-            {
-                ModelState.AddModelError("", "**Preencha todos os campos!**");
-            }
+
+             ModelState.AddModelError("", "**Preencha todos os campos!**");
+
             return View(veiculo);
         }
 

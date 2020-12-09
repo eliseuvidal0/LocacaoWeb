@@ -15,9 +15,6 @@ namespace LocacaoWeb.Models
         public virtual string placa { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]
-        public virtual string tipo { get; set; }
-
-        [Required(ErrorMessage = "Campo obrigatório!")]
         public virtual string marca { get; set; }
 
         [Required(ErrorMessage = "Campo obrigatório!")]

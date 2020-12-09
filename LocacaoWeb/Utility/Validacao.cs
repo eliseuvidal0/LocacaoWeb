@@ -128,45 +128,7 @@ namespace LocacaoWeb.Utility
                     return atual.Year - data.Year - 1;
                 }
             }
-            public static bool ValidarCatCnh(Locacao locacao)
-            {
-                if (locacao.veiculo.tipo == "Carro" && locacao.cliente.cnh == "A")
-                {
-                    return false;
-                }
-                else if (locacao.veiculo.tipo == "Caminhão" && locacao.cliente.cnh == "B")
-                {
-                    return false;
-                }
-                else if (locacao.veiculo.tipo == "Caminhão" && locacao.cliente.cnh == "A")
-                {
-                    return false;
-                }
-                else if (locacao.veiculo.tipo == "Caminhão" && locacao.cliente.cnh == "AB")
-                {
-                    return false;
-                }
-                else if (locacao.veiculo.tipo == "Moto" && locacao.cliente.cnh == "B")
-                {
-                    return false;
-                }
-                else if (locacao.veiculo.tipo == "Moto" && locacao.cliente.cnh == "C")
-                {
-                    return false;
-                }
-                else if (locacao.veiculo.tipo == "Moto" && locacao.cliente.cnh == "D")
-                {
-                    return false;
-                }
-                else if (locacao.veiculo.tipo == "Moto" && locacao.cliente.cnh == "E")
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
+
     }
 }
 
