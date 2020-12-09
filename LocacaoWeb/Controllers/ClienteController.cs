@@ -33,7 +33,7 @@ namespace LocacaoWeb.Controllers
                     {
                         if (_clienteDAO.Cadastrar(cliente))
                         {
-                            return RedirectToAction("Index", "Cliente");
+                            return RedirectToAction("Index", "Home");
                         }
                         else
                         {

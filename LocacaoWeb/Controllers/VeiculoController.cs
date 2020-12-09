@@ -51,7 +51,15 @@ namespace LocacaoWeb.Controllers
 
         public IActionResult Remover(int id)
         {
-            _veiculoDAO.Remover(id);
+            Veiculo v = _veiculoDAO.BuscarPorId(id);
+
+            if(v.locado == false)
+            {
+                _veiculoDAO.Remover(id);
+                return RedirectToAction("Index", "Veiculo");
+            }
+
+            ModelState.AddModelError("", "**Veículo está locado**");
             return RedirectToAction("Index", "Veiculo");
         }
 
